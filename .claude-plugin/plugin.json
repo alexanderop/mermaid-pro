@@ -1,0 +1,9 @@
+{
+  "name": "mermaid-pro",
+  "version": "0.1.0",
+  "description": "Makes Claude Code write Mermaid diagrams that parse and read well: per-type syntax references, a hook that validates every ```mermaid block with the real Mermaid parser, and a render-and-look check.",
+  "author": { "name": "Alexander Opalic" },
+  "repository": "https://github.com/alexanderop/mermaid-pro",
+  "license": "MIT",
+  "keywords": ["mermaid", "diagrams", "validation", "hooks"]
+}
