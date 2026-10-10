@@ -8,7 +8,7 @@ A flowchart tells you what happens next. An agentflow tells you _who_ is doing i
 - **Containers** (`flow … end`) group work and nest to any depth.
 - **Shapes** carry meaning: a `task` is not a `tool` is not a `decision`.
 - **Edges** carry meaning: sequence, reference, and failure are three different arrows.
-- **Metadata** (`@{ … }`) attaches the non-visual detail — the model, the instruction, the parameter and return types, the connector a tool is bound to.
+- **Metadata** (`@{ … }`) attaches the non-visual detail - the model, the instruction, the parameter and return types, the connector a tool is bound to.
 
 ## Basic example
 ```mermaid
@@ -24,7 +24,7 @@ agentflow-beta TB
 ```
 
 ## Declaring a diagram
-Every diagram starts with the `agentflow-beta` keyword, optionally followed by a direction — `TB`, `TD`, `BT`, `LR`, or `RL`.
+Every diagram starts with the `agentflow-beta` keyword, optionally followed by a direction - `TB`, `TD`, `BT`, `LR`, or `RL`.
 ```txt
 agentflow-beta LR
 ```
@@ -39,11 +39,11 @@ The shape is chosen with the `shape` key in an `@{ … }` block. Agentflow provi
 | Alias | Meaning | Underlying shape |
 |---|---|---|
 | `task` | A unit of work an agent performs | `roundedRect` |
-| `tool` | A callable capability — a function, an API, a subroutine | `subroutine` |
+| `tool` | A callable capability - a function, an API, a subroutine | `subroutine` |
 | `input` | Data entering the workflow | `lean-right` |
 | `decision` | A branch point | `diamond` |
 | `refdoc` | Reference material an agent consults | `lin-doc` |
-| `action` | A side-effecting step — sending, writing, publishing | `hexagon` |
+| `action` | A side-effecting step - sending, writing, publishing | `hexagon` |
 
 Any canonical Mermaid shape name also works, so the aliases are a convenience rather than a restriction.
 ```mermaid
@@ -117,7 +117,7 @@ agentflow-beta TB
     index -.- corpus
   end
 ```
-`global` takes no id, label, or metadata, renders nothing itself, and may appear anywhere in the diagram — including nested inside a flow, as an escape hatch.
+`global` takes no id, label, or metadata, renders nothing itself, and may appear anywhere in the diagram - including nested inside a flow, as an escape hatch.
 
 ### Collapsing a container
 `@{ view: collapsed }` folds a container down to a single summary node while keeping its edges. Edges that crossed the boundary terminate at the collapsed node instead of disappearing.
@@ -145,7 +145,7 @@ Mermaid itself acts on a small, fixed set of keys:
 | `algorithm` | containers | Per-container ELK algorithm |
 | `curve`, `animate`, `animation` | edges | Edge interpolation and animation |
 
-Everything else is carried through untouched and surfaced to consumers, so the vocabulary below is a convention rather than a closed list — an unknown key is preserved, never rejected.
+Everything else is carried through untouched and surfaced to consumers, so the vocabulary below is a convention rather than a closed list - an unknown key is preserved, never rejected.
 
 The one exception is prototype-shaped keys: `__proto__`, `constructor`, and `prototype` are stripped from parsed metadata, at every level of nesting.
 
@@ -243,4 +243,4 @@ agentflow-beta TB
 Two accessors on the diagram DB are meant for programs rather than people:
 
 - **`getSemanticModel()`** returns the diagram with presentation-only controls (`view`, `class`, `style`, `icon`, `img`, `w`, `h`) stripped, so downstream consumers get a stable semantic view that does not shift when someone restyles the diagram.
-- **`getDiagnostics()`** returns structured warnings — unresolved references, misapplied metadata keys, containment violations, unsatisfied capability requirements — each with a source position.
+- **`getDiagnostics()`** returns structured warnings - unresolved references, misapplied metadata keys, containment violations, unsatisfied capability requirements - each with a source position.

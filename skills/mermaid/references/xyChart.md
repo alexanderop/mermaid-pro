@@ -198,7 +198,7 @@ xychart
     y-axis "Parameters (B)" 0 --> 600
     line [540 "PaLM", 65 "LLaMA-65B", 34 "Llama 2 34B", 7 "Mistral 7B", 3.8 "Phi-3-mini"]
 ```
-Labels are optional per point — you can mix labeled and unlabeled values:
+Labels are optional per point - you can mix labeled and unlabeled values:
 ```mermaid
 xychart
     title "Quarterly Performance"

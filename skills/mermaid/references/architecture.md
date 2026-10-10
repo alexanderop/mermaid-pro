@@ -5,7 +5,7 @@
 ## Pitfalls
 
 - **Aligning siblings (v11.16.0+).** the declared order must not contradict the directions of edges between the listed members. For example, if the diagram contains `a:L --> R:b` (which places `a` to the right of `b`), then `align row a b` will conflict with that edge direction and the layout engine will fail to render.
-- **`randomize` (v11.14.0+).** `randomize: false` alone is not enough to guarantee identical renders — the underlying fcose layout still calls `Math.random()` during its constraint solver. Use the `seed` option (described below) to lock the layout fully.
+- **`randomize` (v11.14.0+).** `randomize: false` alone is not enough to guarantee identical renders - the underlying fcose layout still calls `Math.random()` during its constraint solver. Use the `seed` option (described below) to lock the layout fully.
 - **Layout tuning (v11.15.0+).** these knobs tune fcose's force-directed layout; they do not change which nodes the layout heuristic considers adjacent.
 
 ## Example
@@ -226,7 +226,7 @@ The following options pass through to the underlying fcose layout so you can adj
 | `numIter` | number | `2500` | Maximum fcose iterations. Increase for higher-quality layouts on large diagrams at the cost of render time. |
 | `seed` | number | `1` | Deterministic seed for fcose. Defaults to `1` so the same diagram always renders with the same layout. |
 
-Example — bumping `idealEdgeLengthMultiplier` stretches the spacing between connected nodes in a chain:
+Example - bumping `idealEdgeLengthMultiplier` stretches the spacing between connected nodes in a chain:
 ```
 ---
 config:

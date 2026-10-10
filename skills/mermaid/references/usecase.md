@@ -78,7 +78,7 @@ Clerk --> Authorize
 Authorize --> Receipt
 classDef system stroke:#4b4b7a
 ```
-Titles accept the same label forms as use cases — unquoted text, a plain string, or a Markdown string — inside either `[…]` or `(…)`.
+Titles accept the same label forms as use cases - unquoted text, a plain string, or a Markdown string - inside either `[…]` or `(…)`.
 
 A boundary declared with a quoted title and no identifier gets a deterministic one instead.
 

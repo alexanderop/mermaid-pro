@@ -5,7 +5,7 @@
 ## Pitfalls
 
 - **Box-Drawing Input.** If a parse error occurs, line numbers in the error message refer to your original input. Tab characters are automatically expanded to spaces.
-- **Icon overrides with icon().** Icon packs are not bundled with Mermaid — they must be registered with `registerIconPacks` by the site embedding the diagram. See registering icon packs. An unregistered icon renders as a question mark.
+- **Icon overrides with icon().** Icon packs are not bundled with Mermaid - they must be registered with `registerIconPacks` by the site embedding the diagram. See registering icon packs. An unregistered icon renders as a question mark.
 
 ## Introduction
 A TreeView diagram is used to represent hierarchical data in the form of a directory-like structure, with file/folder icons, connector lines, and optional annotations.
@@ -13,8 +13,8 @@ A TreeView diagram is used to represent hierarchical data in the form of a direc
 ## Syntax
 The structure of the tree depends only on indentation. Labels can be **bare** (unquoted) or **quoted** (for names containing spaces).
 
-- Directories are indicated by a trailing `/` on the label — they render in bold text.
-- Icons are hidden by default — enable the built-in file/folder icons with the `showIcons` config option, or set one per node with `icon()`.
+- Directories are indicated by a trailing `/` on the label - they render in bold text.
+- Icons are hidden by default - enable the built-in file/folder icons with the `showIcons` config option, or set one per node with `icon()`.
 - Quoted labels (`"my file"`) support spaces in names.
 ```
 treeView-beta
@@ -33,7 +33,7 @@ treeView-beta
 ```
 
 ## Box-Drawing Input
-As an alternative to indentation, you can use box-drawing characters to define the tree structure. The parser auto-detects the format — no extra keyword or config is needed.
+As an alternative to indentation, you can use box-drawing characters to define the tree structure. The parser auto-detects the format - no extra keyword or config is needed.
 
 Both standard (`├──`, `└──`, `│`) and heavy (`┣━━`, `┗━━`, `┃`) Unicode variants are supported.
 ```mermaid
@@ -44,7 +44,7 @@ treeView-beta
 ├── package.json
 └── README.md
 ```
-All annotations work the same way — just append them after the label:
+All annotations work the same way - just append them after the label:
 ```mermaid
 treeView-beta
 ├── src/
@@ -79,7 +79,7 @@ treeView-beta
 ```
 
 ### Inline descriptions with `##`
-Add a visible description after `##` — rendered next to the label in italic:
+Add a visible description after `##` - rendered next to the label in italic:
 ```mermaid
 treeView-beta
     src/
@@ -89,7 +89,7 @@ treeView-beta
 ```
 
 ### Icons
-Icons are hidden by default. Set the `showIcons` config option to `true` to show the built-in icons — `file` for files and `folder` for directories:
+Icons are hidden by default. Set the `showIcons` config option to `true` to show the built-in icons - `file` for files and `folder` for directories:
 ```mermaid
 ---
 config:
@@ -102,7 +102,7 @@ treeView-beta
     package.json
 ```
 #### File-type icons via config maps
-Mermaid ships no filename/extension mapping — file-type icons are fully user-configured through the `filenameIcons` and `extensionIcons` config options, using icons from a registered icon pack such as material-icon-theme.
+Mermaid ships no filename/extension mapping - file-type icons are fully user-configured through the `filenameIcons` and `extensionIcons` config options, using icons from a registered icon pack such as material-icon-theme.
 ```mermaid
 ---
 config:
@@ -133,7 +133,7 @@ treeView-beta
         index.js
     package.json
 ```
-When `defaultIconPack` is set, unprefixed names resolve in that pack — `icon(rust)` becomes shorthand for `icon(material-icon-theme:rust)`. The built-in `file` and `folder` icons can always be referenced without a prefix, e.g.
+When `defaultIconPack` is set, unprefixed names resolve in that pack - `icon(rust)` becomes shorthand for `icon(material-icon-theme:rust)`. The built-in `file` and `folder` icons can always be referenced without a prefix, e.g.
 #### Hiding icons
 When `showIcons` is enabled, use `icon()` or `icon(none)` to hide the icon of a single node:
 ```mermaid
@@ -182,7 +182,7 @@ treeView-beta
 ```
 Unicode and emoji in labels:
 
-Labels are rendered exactly as written — unicode characters and consecutive spaces are preserved. Since the built-in icons are hidden by default, emoji make handy inline icons:
+Labels are rendered exactly as written - unicode characters and consecutive spaces are preserved. Since the built-in icons are hidden by default, emoji make handy inline icons:
 ```mermaid
 treeView-beta
     🚀 rocket-app/

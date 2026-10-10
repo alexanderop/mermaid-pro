@@ -67,6 +67,7 @@ function stripInline(s) {
     .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
     .replace(/\[([^\]]*)\]\((?:[^()]|\([^)]*\))*\)/g, '$1')
     .replace(/<\/?(?:br|p|div|span|a|img|center)\b[^>]*>/gi, ' ')
+    .replace(/\s[—–]\s/g, ' - ')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&amp;/g, '&')

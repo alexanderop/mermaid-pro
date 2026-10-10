@@ -35,7 +35,7 @@ complex
   "Investigate root cause"
   "Run chaos experiment"
 ```
-Keep per-domain item lists short — the quadrants have fixed layout and long lists can visually overflow their boxes.
+Keep per-domain item lists short - the quadrants have fixed layout and long lists can visually overflow their boxes.
 
 ### Transitions
 Transitions represent movement of items between domains over time. They are declared at the top level using `-->` between two domain names, with an optional label.
