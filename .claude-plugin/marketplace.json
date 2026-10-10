@@ -1,5 +1,14 @@
 {
   "name": "mermaid-pro",
-  "owner": { "name": "Alexander Opalic" },
-  "plugins": [{ "name": "mermaid-pro", "source": "./", "description": "Validated, readable Mermaid diagrams for Claude Code" }]
+  "owner": {
+    "name": "Alexander Opalic"
+  },
+  "plugins": [
+    {
+      "name": "mermaid-pro",
+      "source": "./",
+      "description": "Validated, readable Mermaid diagrams for Claude Code"
+    }
+  ],
+  "description": "Mermaid diagrams for Claude Code that parse on the first try"
 }
