@@ -1,0 +1,5 @@
+```mermaid
+%%{init: {"theme": "dark"}}%%
+flowchart TD
+  A --> B
+```
