@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "npm run build && node --test test/validate.test.mjs"
+    "test": "npm run build && node --test test/validate.test.mjs test/render.test.mjs"
   },
   "devDependencies": {
     "esbuild": "0.28.2",

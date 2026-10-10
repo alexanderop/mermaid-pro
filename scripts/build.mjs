@@ -34,4 +34,6 @@ await build({
   // Bundled CommonJS deps call require() on Node builtins, which ESM does not provide.
   banner: { js: "import{createRequire as __cr}from'node:module';const require=__cr(import.meta.url);" },
 });
+// The render script loads this in a headless page; plugin users have no node_modules to copy it from.
+fs.copyFileSync(path.join(root, 'node_modules/mermaid/dist/mermaid.min.js'), path.join(root, 'dist/mermaid.min.js'));
 console.log(`built ${path.relative(root, outfile)}: ${(fs.statSync(outfile).size / 1e6).toFixed(2)} MB`);
