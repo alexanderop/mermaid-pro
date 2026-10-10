@@ -1,0 +1,241 @@
+> Mermaid v12.1.0 · source: packages/mermaid/src/docs/syntax/swimlanes.md · header: `swimlane-beta` · since 11.16.0 · beta (header needs the `-beta` suffix)
+
+# Swimlanes Diagram (v11.16.0+)
+
+## Pitfalls
+
+- This is a new diagram type in Mermaid. Its syntax may evolve in future versions.
+
+Use swimlane diagrams when the most important question is not only "what happens next?" but also "who owns this step?" They are useful for approval flows, support processes, delivery workflows, and any process where work crosses teams or systems.
+
+## Syntax
+A swimlane diagram starts with the `swimlane-beta` keyword. You can optionally add a direction after the keyword.
+```
+swimlane-beta
+```
+```
+swimlane-beta LR
+```
+The supported directions are:
+
+| Direction | Meaning |
+|---|---|
+| `TB` | Top to bottom |
+| `TD` | Top down, same as `TB` |
+| `BT` | Bottom to top |
+| `LR` | Left to right |
+| `RL` | Right to left |
+
+If no direction is set, the diagram uses `TB`.
+
+### Lanes
+Use `subgraph` to create a lane. In a swimlane diagram, top-level subgraphs are rendered as swimlanes. A lane ends with `end`.
+```mermaid
+swimlane-beta
+  subgraph Sales
+    lead[Qualify lead]
+    quote[Prepare quote]
+  end
+```
+You can give a lane an internal id and a display label. This is useful when the label contains spaces or when you want a stable id for styling.
+
+### Nodes
+Nodes use flowchart-style shape syntax. The id is written first, and the label is written inside the shape.
+```mermaid
+swimlane-beta LR
+  subgraph Intake
+    start([Start])
+    task[Do work]
+    fix[Fix issues]
+  end
+
+  subgraph Review
+    decision{Ready?}
+  end
+
+  subgraph Complete
+    done((Done))
+  end
+
+  start --> task --> decision
+  decision -->|Yes| done
+  decision -->|No| fix
+  fix --> task
+```
+The most common node forms are:
+
+| Syntax | Shape | Common use |
+|---|---|---|
+| `id[Text]` | Rectangle | Task or activity |
+| `id(Text)` | Rounded rectangle | Step or event |
+| `id([Text])` | Stadium | Start or end |
+| `id{Text}` | Decision | Branching question |
+| `id((Text))` | Circle | Connector or marker |
+
+For the complete shape catalog, icons, images, markdown strings, classes, and styling options, see Flowchart syntax.
+
+### Edges
+Edges also use flowchart-style syntax. They can connect nodes in the same lane or across lanes.
+```mermaid
+swimlane-beta LR
+  subgraph Buyer
+    choose[Choose product]
+    pay[Pay invoice]
+  end
+
+  subgraph Store
+    reserve[Reserve stock]
+    ship[Ship product]
+  end
+
+  choose --> reserve
+  reserve -->|Invoice ready| pay
+  pay --> ship
+```
+Common edge forms:
+
+| Syntax | Meaning |
+|---|---|
+| `A --> B` | Arrow |
+| `A --- B` | Line without arrowhead |
+| `A -->\|Label\| B` | Arrow with label |
+| `A -.-> B` | Dotted arrow |
+| `A ==> B` | Thick arrow |
+
+For the full edge syntax, including multi-directional arrows and minimum link length, see Flowchart syntax.
+
+### Accessibility
+Use `accTitle` and `accDescr` to provide an accessible title and description.
+```mermaid
+swimlane-beta LR
+  accTitle: Support escalation
+  accDescr: A request starts with the customer, is triaged by support, and may be escalated to engineering.
+
+  subgraph Customer
+    request[Open request]
+  end
+
+  subgraph Support
+    triage[Triage]
+  end
+
+  subgraph Engineering
+    resolve[Resolve]
+  end
+
+  request --> triage --> resolve
+```
+
+### Make Each Lane Mean One Kind of Ownership
+Choose lanes that answer "who owns this step?" Avoid mixing teams, phases, and statuses in the same diagram unless that distinction is the point of the diagram.
+```mermaid
+swimlane-beta LR
+  subgraph Customer
+    submit[Submit order]
+    confirm[Confirm delivery]
+  end
+
+  subgraph Store
+    check[Check order]
+    pack[Pack items]
+  end
+
+  subgraph Carrier
+    collect[Collect package]
+    deliver[Deliver package]
+  end
+
+  submit --> check --> pack --> collect --> deliver --> confirm
+```
+
+### Label Cross-Lane Handoffs
+A cross-lane arrow is where responsibility changes. Label the arrow when the handoff depends on a document, decision, message, or condition.
+```mermaid
+swimlane-beta LR
+  subgraph Applicant
+    apply[Submit application]
+    sign[Sign agreement]
+  end
+
+  subgraph Reviewer
+    screen[Screen application]
+    decide{Approved?}
+  end
+
+  subgraph System
+    create[Create account]
+    notify[Send welcome email]
+  end
+
+  apply -->|Application received| screen
+  screen --> decide
+  decide -->|Approved| create --> notify --> sign
+  decide -->|Needs changes| apply
+```
+
+### Keep Long Processes Readable
+Split a large process into several diagrams when the lanes or handoffs stop fitting in one view. A useful swimlane diagram is usually readable without tracing every arrow twice.
+```mermaid
+swimlane-beta TB
+  subgraph Intake
+    collect[Collect request]
+    validate[Validate details]
+  end
+
+  subgraph Review
+    review[Review request]
+    decide{Ready?}
+  end
+
+  subgraph Delivery
+    schedule[Schedule work]
+    complete[Complete work]
+  end
+
+  collect --> validate --> review --> decide
+  decide -->|Yes| schedule --> complete
+  decide -->|No| collect
+```
+
+### Use Stable Ids
+Use short, meaningful ids for nodes and lanes. The label can change without breaking links, styles, or later references.
+```mermaid
+swimlane-beta LR
+  subgraph ops [Operations]
+    intake[Receive request]
+    plan[Plan work]
+  end
+
+  subgraph legal [Legal]
+    review[Review contract]
+  end
+
+  intake --> plan --> review
+
+  classDef attention fill:#fff2cc,stroke:#d6a500,color:#111;
+  class review attention;
+```
+
+### Put Decisions Where They Are Made
+Place a decision node in the lane that owns the decision. Then route the outcomes to the lanes that act on the result.
+```mermaid
+swimlane-beta LR
+  subgraph Support
+    classify{Can support solve it?}
+    respond[Respond to customer]
+  end
+
+  subgraph Product
+    prioritize[Prioritize fix]
+  end
+
+  subgraph Engineering
+    implement[Implement fix]
+  end
+
+  classify -->|Yes| respond
+  classify -->|No| prioritize --> implement --> respond
+```
+
+## When to Use Another Diagram
+Use a regular flowchart when ownership is not important and you only need to show sequence or branching. Use a sequence diagram when the focus is messages over time between participants.

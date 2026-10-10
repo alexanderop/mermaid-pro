@@ -23,7 +23,7 @@
     "architecture": { "header": "architecture-beta", "doc": "architecture", "since": "11.1.0", "beta": true },
     "kanban": { "header": "kanban", "doc": "kanban", "since": "11.4.0" },
     "radar": { "header": "radar-beta", "doc": "radar", "since": "11.6.0", "beta": true },
-    "treemap": { "header": "treemap-beta", "doc": "treemap", "since": "11.9.0", "beta": true },
+    "treemap": { "header": "treemap-beta", "doc": "treemap", "since": "11.8.0", "beta": true },
     "venn": { "header": "venn-beta", "doc": "venn", "since": "11.13.0", "beta": true },
     "ishikawa": { "header": "ishikawa-beta", "doc": "ishikawa", "since": "11.13.0", "beta": true },
     "wardley": { "header": "wardley-beta", "doc": "wardley", "since": "11.14.0", "beta": true },
